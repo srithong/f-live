@@ -3,6 +3,10 @@ services:
   f_live_nginx:
     build: . 
     container_name: f_live_nginx
+    volumes:
+      - ./cert/certificate.crt:/etc/nginx/ssl/certificate.crt
+      - ./cert/private.key:/etc/nginx/ssl/private.key
+
     ports:
       - 80:80
     depends_on:
