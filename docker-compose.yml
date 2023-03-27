@@ -6,8 +6,8 @@ services:
     volumes:
       - ./cert/certificate.crt:/etc/nginx/ssl/certificate.crt
       - ./cert/private.key:/etc/nginx/ssl/private.key
-
     ports:
+      - 443:443
       - 80:80
     depends_on:
       - "f_live_web"
