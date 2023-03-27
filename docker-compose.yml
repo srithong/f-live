@@ -1,0 +1,33 @@
+version: '3'
+services:
+  f_live_nginx:
+    build: . 
+    container_name: f_live_nginx
+    ports:
+      - 80:80
+    depends_on:
+      - "f_live_web"
+    networks:
+      - f-live
+      
+  f_live_web: 
+    build: ./web
+    container_name: f_live_web
+    expose:
+      - 80
+    networks:
+      - f-live
+
+  f_live_api:
+    build: ./api
+    container_name: f_live_api
+    command: sh -c "node index.js"
+    expose:
+      - 3000
+    networks:
+      - f-live
+
+networks:
+  f-live:
+    external:
+      name: f-live
