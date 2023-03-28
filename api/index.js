@@ -63,7 +63,7 @@ function start() {
       },
     ];
 
-    clients.forEach((client) => {
+    monitors.forEach((client) => {
       const eventName = `event: live\n`;
       const data = `data: ${JSON.stringify(messages)}\n\n`;
       client.res.write(eventName);
@@ -88,7 +88,7 @@ function start() {
 
   setInterval(() => {
     messages = [];
-  }, 600000);
+  }, 300000);
 
   app.listen(3000, () => console.log("Example app listening on port 3000!"));
 }
